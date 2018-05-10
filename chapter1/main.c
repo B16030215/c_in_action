@@ -148,10 +148,10 @@ void welcome(){
 	switch(n){
 		case 1:
 			system("cls");
+			DrawGameframe();
 			break;
 		case 2:
 			system("cls");
-			DrawGameframe();
 			break;
 		case 3:
 			break;
