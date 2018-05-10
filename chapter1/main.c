@@ -12,7 +12,8 @@
 /************定义全局变量*************/
 int i,j,Temp,Temp1,Temp2;
 
-int a[80][80]={0};
+int a[80][80]={0}; //游戏的所有坐标 
+
 int b[4];
 
 
@@ -149,6 +150,8 @@ void welcome(){
 			system("cls");
 			break;
 		case 2:
+			system("cls");
+			DrawGameframe();
 			break;
 		case 3:
 			break;
@@ -157,6 +160,81 @@ void welcome(){
 	}
 	
 }
+
+
+
+void DrawGameframe(){
+	
+	//游戏标题 
+	color(11);
+	gotoxy(FrameX+Frame_width-7, FrameY-2);
+	printf("趣味俄罗斯方块");
+	
+	color(2);
+	gotoxy(FrameX+2*Frame_width+3, FrameY+7);
+	printf("**********");
+	
+	color(3);
+	//gotoxy(FrameX+2*Frame_width+13, FrameY+7);
+	printf("下一出现方块：");
+	
+	color(2);
+	gotoxy(FrameX+2*Frame_width+3, FrameY+13);
+	printf("**********");
+	
+	//显示文字选项说明 
+	color(14);
+	gotoxy(FrameX+2*Frame_width+3, FrameY+15);
+	printf("Esc：退出游戏");
+	
+	gotoxy(FrameX+2*Frame_width+3, FrameY+17);
+	printf("↑键：旋转");
+	
+	gotoxy(FrameX+2*Frame_width+3, FrameY+19);
+	printf("空格键：暂停游戏");
+	
+	//制表
+	color(12);
+	
+	//打印角 
+	gotoxy(FrameX, FrameY);
+	printf("╔");
+	gotoxy(FrameX+2*Frame_width-2, FrameY);
+	printf("╗");
+	gotoxy(FrameX, FrameY+Frame_height);
+	printf("╚");
+	gotoxy(FrameX+2*Frame_width-2, FrameY+Frame_height);
+	printf("╝");
+	
+	a[FrameX][FrameY+Frame_height]=2;
+	a[FrameX+2*Frame_width-2][FrameY+Frame_height]=2;
+	
+	
+	for(i=2; i<2*Frame_width-2;i+=2){
+		// 打印上边框 
+		gotoxy(FrameX+i, FrameY);
+		printf("═");
+		//a[FrameX+i][FrameY]=2;
+		// 打印下边框 
+		gotoxy(FrameX+i, FrameY+Frame_height);
+		printf("═");
+		a[FrameX+i][FrameY+Frame_height]=2;
+	}
+	
+	
+	for(i=1; i<Frame_height;i+=1){
+		// 打印左边框 
+		gotoxy(FrameX, FrameY+i);
+		printf("║");
+		a[FrameX][FrameY+i]=2;
+		// 打印右边框 
+		gotoxy(FrameX+2*Frame_width-2, FrameY+i);
+		printf("║");
+		a[FrameX+2*Frame_width-2][FrameY+i]=2;
+	}
+	
+}
+
 
 
 int main(int argc, char *argv[]) {
