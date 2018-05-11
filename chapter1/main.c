@@ -236,6 +236,63 @@ void DrawGameframe(){
 }
 
 
+void MakeTetris(struct Tetris *tetris){
+	
+	//³õÊ¼ÖÐÐÄ¿é 
+	a[tetris->x][tetris->y] = b[0];
+	
+	switch(tetris->flag){
+		case 1:{	//Ìï×Ö¿é 
+			color(10);
+			a[tetris->x][tetris->y-1] = b[1];
+			a[tetris->x+2][tetris->y-1] = b[2];
+			a[tetris->x+2][tetris->y] = b[3];
+			break;
+		}
+		case 2:{	//ºáÖ±Ïß 
+			color(13);
+			a[tetris->x-2][tetris->y] = b[1];
+			a[tetris->x+2][tetris->y] = b[2];
+			a[tetris->x+4][tetris->y] = b[3];
+			break;
+		}
+		case 3:{	//ÊúÖ±Ïß 
+			color(13);
+			a[tetris->x][tetris->y-1] = b[1];
+			a[tetris->x][tetris->y-2] = b[2];
+			a[tetris->x][tetris->y+1] = b[3];
+			break;
+		}
+		case 4:{	//ÏÂ¶¡×Ö 
+			color(11);
+			a[tetris->x-2][tetris->y] = b[1];
+			a[tetris->x+2][tetris->y] = b[2];
+			a[tetris->x][tetris->y+1] = b[3];
+			break;
+		}
+		case 5:{	//×ó¶¡×Ö 
+			color(11);
+			a[tetris->x][tetris->y-1] = b[1];
+			a[tetris->x-2][tetris->y] = b[2];
+			a[tetris->x][tetris->y+1] = b[3];
+			break;
+		}
+		case 6:{	//ÉÏ¶¡×Ö 
+			color(11);
+			a[tetris->x-2][tetris->y] = b[1];
+			a[tetris->x+2][tetris->y] = b[2];
+			a[tetris->x][tetris->y-1] = b[3];
+			break;
+		}
+		case 7:{	//ÓÒ¶¡×Ö 
+			color(11);
+			a[tetris->x][tetris->y-1] = b[1];
+			a[tetris->x][tetris->y+1] = b[2];
+			a[tetris->x+2][tetris->y] = b[3];
+			break;
+		}
+	}
+}
 
 int main(int argc, char *argv[]) {
 	
