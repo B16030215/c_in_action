@@ -378,6 +378,15 @@ void MakeTetris(struct Tetris *tetris){
 	}
 }
 
+
+void PrintTetris(struct Tetris *tetris){
+	for(i=0; i<4; i++){
+		b[i] = 1;
+	}
+	
+	
+}
+
 int main(int argc, char *argv[]) {
 	
 	// ÓÎÏ·Ãû³Æ 
