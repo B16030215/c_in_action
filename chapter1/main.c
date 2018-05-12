@@ -291,6 +291,34 @@ void MakeTetris(struct Tetris *tetris){
 			a[tetris->x+2][tetris->y] = b[3];
 			break;
 		}
+		case 8:{	//Z×Ö 
+			color(14);
+			a[tetris->x-2][tetris->y] = b[1];
+			a[tetris->x+2][tetris->y+1] = b[2];
+			a[tetris->x][tetris->y+1] = b[3];
+			break;
+		}
+		case 9:{	//ÊúZ×Ö 
+			color(14);
+			a[tetris->x][tetris->y-1] = b[1];
+			a[tetris->x-2][tetris->y] = b[2];
+			a[tetris->x-2][tetris->y+1] = b[3];
+			break;
+		}
+		case 10:{	//·´Z×Ö 
+			color(14);
+			a[tetris->x-2][tetris->y] = b[1];
+			a[tetris->x][tetris->y-1] = b[2];
+			a[tetris->x+2][tetris->y-1] = b[3];
+			break;
+		}
+		case 11:{	//Êú·´Z×Ö 
+			color(14);
+			a[tetris->x][tetris->y+1] = b[1];
+			a[tetris->x-2][tetris->y] = b[2];
+			a[tetris->x-2][tetris->y-1] = b[3];
+			break;
+		}
 	}
 }
 
