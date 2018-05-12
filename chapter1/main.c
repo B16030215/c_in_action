@@ -384,6 +384,36 @@ void PrintTetris(struct Tetris *tetris){
 		b[i] = 1;
 	}
 	
+	MakeTetris(tetris);
+	
+	for(i=tetris->x-2; i<=tetris->y+4; i+=2){
+		for(j=tetris->y-2; j<=tetris->y+1; j++){
+			if(a[i][j]==1 && j>FrameY){
+				gotoxy(i,j);
+				printf("¨");
+			}
+		}
+	}
+	
+	color(4);
+	gotoxy(FrameX+2*Frame_width+3, FrameY+1);
+	printf("level : ");
+	color(12);
+	printf(" %d", tetris->level);
+	
+	color(4);
+	gotoxy(FrameX+2*Frame_width+3, FrameY+3);
+	printf("score : ");
+	color(12);
+	printf(" %d", tetris->score);
+	
+	color(4);
+	gotoxy(FrameX+2*Frame_width+3, FrameY+5);
+	printf("speed : ");
+	color(12);
+	printf(" %dms", tetris->speed);
+	
+	
 	
 }
 
