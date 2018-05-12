@@ -417,6 +417,35 @@ void PrintTetris(struct Tetris *tetris){
 	
 }
 
+
+int ifMove(struct Tetris *tetris){
+	if(a[tetris->x][tetris->y] != 0){
+		return 0;
+	}
+	else{
+		
+	}
+	
+	return 0;
+}
+
+void CleanTetris(struct Tetris *tetris){
+	for(i=0; i<4; i++){
+		b[i] = 0;
+	}
+	
+	MakeTetris(tetris);
+	
+	for(i=tetris->x-2; i<=tetris->x+4; i+=2){
+		for(j=tetris->y-2; j<=tetris->y+1; j++){
+			if(a[i][j]==1 && j>FrameY){
+				gotoxy(i,j);
+				printf("  ");
+			}
+		}
+	}
+}
+
 int main(int argc, char *argv[]) {
 	
 	// ÓÎÏ·Ãû³Æ 
