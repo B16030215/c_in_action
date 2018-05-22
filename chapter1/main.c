@@ -567,6 +567,50 @@ void CleanTetris(struct Tetris *tetris){
 	}
 }
 
+void Del_Fullline(struct Tetris *tetris){
+	int k, del_rows = 0;
+
+	for(j=FrameY+Frame_height-1; j>FrameY+1; j--){
+		k = 0;
+
+		for(i=FrameX+2; i<2*Frame_width-2; i+=2){
+			if(a[i][j]==1){
+				k++;
+
+				if(k==Frame_width-2){
+					for(k=FrameX+2; k<FrameX+2*Frame_width-2; k+=2){
+						a[k][j] = 0;
+						gotoxy(k, j);
+						printf("  ");			
+					}
+
+					for(k=j-1; k=FrameY; k--){
+						if(a[i][k]==1){
+							a[i][k] = 0;
+							gotoxy(i,k);
+							printf("  ");
+							a[i][k+1] = 0;
+							gotoxy(i,k+1);
+							printf("▉");
+						}
+					}
+
+					j++;
+					del_rows++;
+				}
+			}
+		}
+	}
+
+	tetris->score+=100*del_rows;
+
+	if(del_rows>0 && (tetris->score%1000==0 || tetris->score/1000 > tetris->level-1)){
+		tetris->speed-=20;
+		tetris->level++;
+	}
+
+}
+
 int main(int argc, char *argv[]) {
 	
 	// 游戏名称 
