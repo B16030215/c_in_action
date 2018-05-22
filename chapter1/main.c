@@ -611,6 +611,38 @@ void Del_Fullline(struct Tetris *tetris){
 
 }
 
+void Flag(struct Tetris *tetris){
+	tetris->number++;
+	srand(time(NULL));
+	if(tetris->number==1){
+		tetris->flag = rand()%19+1;
+	}
+	tetris->next = rand()%19+1;
+}
+
+void Gameplay(){
+	int n;
+	struct Tetris t, *tetris=&t;
+	char ch;
+	tetris->number = 0;
+	tetris->speed = 300;
+	tetris->score = 0;
+	tetirs->level = 1;
+
+	while(1){
+		Flag(tetris);
+		Temp = tetris->flag;
+		tetris->x = FrameX + 2*Frame_width+6;
+		tetris->y = FrameY + 10;
+		tetris->flag = tetris->next;
+		PrintTetris(tetris);
+		tetris->x = FrameX+Frame_width;
+		tetris->y = FrameY-1;
+		tetris->flag = Temp;
+		
+	}
+}
+
 int main(int argc, char *argv[]) {
 	
 	// 游戏名称 
