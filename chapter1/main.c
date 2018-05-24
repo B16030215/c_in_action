@@ -387,7 +387,7 @@ void PrintTetris(struct Tetris *tetris){
 	
 	MakeTetris(tetris);
 	
-	for(i=tetris->x-2; i<=tetris->y+4; i+=2){
+	for(i=tetris->x-2; i<=tetris->x+4; i+=2){
 		for(j=tetris->y-2; j<=tetris->y+1; j++){
 			if(a[i][j]==1 && j>FrameY){
 				gotoxy(i,j);
@@ -641,7 +641,7 @@ void Gameplay(){
 		tetris->y = FrameY-1;
 		tetris->flag = Temp;
 
-		while(1){
+		while(0){
 
 			label: PrintTetris(tetris);
 			Sleep(tetris->speed);
@@ -747,6 +747,7 @@ void Gameplay(){
 		}
 
 		//已经到顶了，显示游戏结束
+		/*
 		for(i=tetris->y-2;i<tetris->y+2;i++)	
   		{
   			if(i==FrameY)
@@ -786,6 +787,7 @@ void Gameplay(){
   		tetris->x=FrameX+2*Frame_width+6;
   		tetris->y=FrameY+10;
   		CleanTetris(tetris);
+  		*/
 	}
 }
 
