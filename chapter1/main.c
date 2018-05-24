@@ -149,6 +149,7 @@ void welcome(){
 		case 1:
 			system("cls");
 			DrawGameframe();
+			Gameplay();
 			break;
 		case 2:
 			system("cls");
@@ -744,9 +745,57 @@ void Gameplay(){
 			}
 
 		}
-		
+
+		//已经到顶了，显示游戏结束
+		for(i=tetris->y-2;i<tetris->y+2;i++)	
+  		{
+  			if(i==FrameY)
+   			{
+   				system("cls");	//清屏
+                gotoxy(29,7);   //设置显示位置
+                printf("   \n");
+				color(12);	//红色
+				printf("\t\t\t▉▉▉▉    ▉   ▉    ▉▉      \n");
+                printf("\t\t\t▉       ▉▉  ▉    ▉  ▉    \n");
+                printf("\t\t\t▉▉▉▉    ▉ ▉ ▉    ▉   ▉   \n");
+				printf("\t\t\t▉       ▉  ▉▉    ▉  ▉    \n");
+				printf("\t\t\t▉▉▉▉    ▉   ▉    ▉▉      \n");
+				gotoxy(17,18);
+				color(14);
+				printf("我要重新玩一局-------1");
+				gotoxy(44,18);
+				printf("不玩了，退出吧-------2\n");
+				int n;
+				gotoxy(32,20);
+				printf("选择[1/2]:");
+				color(11);
+				scanf("%d", &n);	//输入 1 或 2
+    			switch (n)			//分支语句
+    			{
+    				case 1:
+        				system("cls");
+        				Replay(tetris);       	//重新开始
+        				break;
+    				case 2:
+        				exit(0);
+        				break;
+    			}
+   			}
+  		}
+  		tetris->flag = tetris->next;	//清除右侧下一个方框的图形
+  		tetris->x=FrameX+2*Frame_width+6;
+  		tetris->y=FrameY+10;
+  		CleanTetris(tetris);
 	}
 }
+
+void Replay(struct Tetris *tetris){
+	system("cls");
+	memset(a, 0, 6400*sizeof(int));
+	DrawGameframe();
+	Gameplay();
+}
+
 
 int main(int argc, char *argv[]) {
 	
