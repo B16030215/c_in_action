@@ -3,16 +3,16 @@
 #include <conio.h>
 #include <time.h>
 
-/******************å®å®šä¹‰***************/ 
+/******************ºê¶¨Òå***************/ 
 #define FrameX 13
 #define FrameY 3
 #define Frame_height 20
 #define Frame_width 18
 
-/************å®šä¹‰å…¨å±€å˜é‡*************/
+/************¶¨ÒåÈ«¾Ö±äÁ¿*************/
 int i,j,Temp,Temp1,Temp2;
 
-int a[80][80]={0}; //æ¸¸æˆçš„æ‰€æœ‰åæ ‡ 
+int a[80][80]={0}; //ÓÎÏ·µÄËùÓĞ×ø±ê 
 
 int b[4];
 
@@ -31,7 +31,7 @@ struct Tetris{
 HANDLE hOut;
 
 
-/*********å‡½æ•°å£°æ˜************/
+/*********º¯ÊıÉùÃ÷************/
 int color(int c); 
 void gotoxy(int x, int y);
 void DrawGameframe();
@@ -66,50 +66,50 @@ void gotoxy(int x, int y){
 void title(){
 	color(15);
 	gotoxy(24, 3);
-	printf("è¶£ å‘³ ä¿„ ç½— æ–¯ æ–¹ å—\n");
+	printf("È¤ Î¶ ¶í ÂŞ Ë¹ ·½ ¿é\n");
 	
 	color(11);
 	gotoxy(18, 5);
-	printf("â–‰");
+	printf("¨");
 	gotoxy(18,6);
-	printf("â–‰â–‰");
+	printf("¨¨");
 	gotoxy(18,7);
-	printf("â–‰");
+	printf("¨");
 	
 	color(14);
 	gotoxy(26,6);
-	printf("â–‰â–‰");
+	printf("¨¨");
 	gotoxy(28,7);
-	printf("â–‰â–‰");
+	printf("¨¨");
 	
 	color(10);
 	gotoxy(36,6);
-	printf("â–‰â–‰");
+	printf("¨¨");
 	gotoxy(36,7);
-	printf("â–‰â–‰");
+	printf("¨¨");
 	
 	color(13);
 	gotoxy(45,5);
-	printf("â–‰");
+	printf("¨");
 	gotoxy(45,6);
-	printf("â–‰");
+	printf("¨");
 	gotoxy(45,7);
-	printf("â–‰");
+	printf("¨");
 	gotoxy(45,8);
-	printf("â–‰");
+	printf("¨");
 	
 	
 	color(12);
 	gotoxy(56,6);
-	printf("â–‰");
+	printf("¨");
 	gotoxy(52,7);
-	printf("â–‰â–‰â–‰");
+	printf("¨¨¨");
 	
 }
 
 void welcome(){
 	
-	int n; //æ¥æ”¶ç”¨æˆ·è¾“å…¥çš„é€‰é¡¹å‚æ•° 
+	int n; //½ÓÊÕÓÃ»§ÊäÈëµÄÑ¡Ïî²ÎÊı 
 	
 	int i,j = 1;
 	
@@ -125,23 +125,23 @@ void welcome(){
 		}
 	}
 	
-	// æ‰“å°é€‰é¡¹ 
+	// ´òÓ¡Ñ¡Ïî 
 	color(12);
 	gotoxy(25,12);
-	printf("1.å¼€å§‹æ¸¸æˆ");
+	printf("1.¿ªÊ¼ÓÎÏ·");
 	gotoxy(40,12);
-	printf("2.æŒ‰é”®è¯´æ˜");
+	printf("2.°´¼üËµÃ÷");
 	gotoxy(25,17);
-	printf("3.æ¸¸æˆè§„åˆ™");
+	printf("3.ÓÎÏ·¹æÔò");
 	gotoxy(40,17);
-	printf("4.é€€å‡º");
+	printf("4.ÍË³ö");
 	
-	//é€‰é¡¹é€‰æ‹©æç¤º
+	//Ñ¡ÏîÑ¡ÔñÌáÊ¾
 	color(3);
 	gotoxy(21, 22);
-	printf("è¯·é€‰æ‹©[1 2 3 4]:[ ]\b\b");
+	printf("ÇëÑ¡Ôñ[1 2 3 4]:[ ]\b\b");
 	
-	//æ¥æ”¶ç”¨æˆ·è¾“å…¥çš„å‚æ•° 
+	//½ÓÊÕÓÃ»§ÊäÈëµÄ²ÎÊı 
 	color(14);
 	scanf("%d",&n);
 	
@@ -166,10 +166,10 @@ void welcome(){
 
 void DrawGameframe(){
 	
-	//æ¸¸æˆæ ‡é¢˜ 
+	//ÓÎÏ·±êÌâ 
 	color(11);
 	gotoxy(FrameX+Frame_width-7, FrameY-2);
-	printf("è¶£å‘³ä¿„ç½—æ–¯æ–¹å—");
+	printf("È¤Î¶¶íÂŞË¹·½¿é");
 	
 	color(2);
 	gotoxy(FrameX+2*Frame_width+3, FrameY+7);
@@ -177,60 +177,60 @@ void DrawGameframe(){
 	
 	color(3);
 	//gotoxy(FrameX+2*Frame_width+13, FrameY+7);
-	printf("ä¸‹ä¸€å‡ºç°æ–¹å—ï¼š");
+	printf("ÏÂÒ»³öÏÖ·½¿é£º");
 	
 	color(2);
 	gotoxy(FrameX+2*Frame_width+3, FrameY+13);
 	printf("**********");
 	
-	//æ˜¾ç¤ºæ–‡å­—é€‰é¡¹è¯´æ˜ 
+	//ÏÔÊ¾ÎÄ×ÖÑ¡ÏîËµÃ÷ 
 	color(14);
 	gotoxy(FrameX+2*Frame_width+3, FrameY+15);
-	printf("Escï¼šé€€å‡ºæ¸¸æˆ");
+	printf("Esc£ºÍË³öÓÎÏ·");
 	
 	gotoxy(FrameX+2*Frame_width+3, FrameY+17);
-	printf("â†‘é”®ï¼šæ—‹è½¬");
+	printf("¡ü¼ü£ºĞı×ª");
 	
 	gotoxy(FrameX+2*Frame_width+3, FrameY+19);
-	printf("ç©ºæ ¼é”®ï¼šæš‚åœæ¸¸æˆ");
+	printf("¿Õ¸ñ¼ü£ºÔİÍ£ÓÎÏ·");
 	
-	//åˆ¶è¡¨
+	//ÖÆ±í
 	color(12);
 	
-	//æ‰“å°è§’ 
+	//´òÓ¡½Ç 
 	gotoxy(FrameX, FrameY);
-	printf("â•”");
+	printf("¨X");
 	gotoxy(FrameX+2*Frame_width-2, FrameY);
-	printf("â•—");
+	printf("¨[");
 	gotoxy(FrameX, FrameY+Frame_height);
-	printf("â•š");
+	printf("¨^");
 	gotoxy(FrameX+2*Frame_width-2, FrameY+Frame_height);
-	printf("â•");
+	printf("¨a");
 	
 	a[FrameX][FrameY+Frame_height]=2;
 	a[FrameX+2*Frame_width-2][FrameY+Frame_height]=2;
 	
 	
 	for(i=2; i<2*Frame_width-2;i+=2){
-		// æ‰“å°ä¸Šè¾¹æ¡† 
+		// ´òÓ¡ÉÏ±ß¿ò 
 		gotoxy(FrameX+i, FrameY);
-		printf("â•");
+		printf("¨T");
 		//a[FrameX+i][FrameY]=2;
-		// æ‰“å°ä¸‹è¾¹æ¡† 
+		// ´òÓ¡ÏÂ±ß¿ò 
 		gotoxy(FrameX+i, FrameY+Frame_height);
-		printf("â•");
+		printf("¨T");
 		a[FrameX+i][FrameY+Frame_height]=2;
 	}
 	
 	
 	for(i=1; i<Frame_height;i+=1){
-		// æ‰“å°å·¦è¾¹æ¡† 
+		// ´òÓ¡×ó±ß¿ò 
 		gotoxy(FrameX, FrameY+i);
-		printf("â•‘");
+		printf("¨U");
 		a[FrameX][FrameY+i]=2;
-		// æ‰“å°å³è¾¹æ¡† 
+		// ´òÓ¡ÓÒ±ß¿ò 
 		gotoxy(FrameX+2*Frame_width-2, FrameY+i);
-		printf("â•‘");
+		printf("¨U");
 		a[FrameX+2*Frame_width-2][FrameY+i]=2;
 	}
 	
@@ -239,137 +239,137 @@ void DrawGameframe(){
 
 void MakeTetris(struct Tetris *tetris){
 	
-	//åˆå§‹ä¸­å¿ƒå— 
+	//³õÊ¼ÖĞĞÄ¿é 
 	a[tetris->x][tetris->y] = b[0];
 	
 	switch(tetris->flag){
-		case 1:{	//ç”°å­—å— 
+		case 1:{	//Ìï×Ö¿é 
 			color(10);
 			a[tetris->x][tetris->y-1] = b[1];
 			a[tetris->x+2][tetris->y-1] = b[2];
 			a[tetris->x+2][tetris->y] = b[3];
 			break;
 		}
-		case 2:{	//æ¨ªç›´çº¿ 
+		case 2:{	//ºáÖ±Ïß 
 			color(13);
 			a[tetris->x-2][tetris->y] = b[1];
 			a[tetris->x+2][tetris->y] = b[2];
 			a[tetris->x+4][tetris->y] = b[3];
 			break;
 		}
-		case 3:{	//ç«–ç›´çº¿ 
+		case 3:{	//ÊúÖ±Ïß 
 			color(13);
 			a[tetris->x][tetris->y-1] = b[1];
 			a[tetris->x][tetris->y-2] = b[2];
 			a[tetris->x][tetris->y+1] = b[3];
 			break;
 		}
-		case 4:{	//ä¸‹ä¸å­— 
+		case 4:{	//ÏÂ¶¡×Ö 
 			color(11);
 			a[tetris->x-2][tetris->y] = b[1];
 			a[tetris->x+2][tetris->y] = b[2];
 			a[tetris->x][tetris->y+1] = b[3];
 			break;
 		}
-		case 5:{	//å·¦ä¸å­— 
+		case 5:{	//×ó¶¡×Ö 
 			color(11);
 			a[tetris->x][tetris->y-1] = b[1];
 			a[tetris->x-2][tetris->y] = b[2];
 			a[tetris->x][tetris->y+1] = b[3];
 			break;
 		}
-		case 6:{	//ä¸Šä¸å­— 
+		case 6:{	//ÉÏ¶¡×Ö 
 			color(11);
 			a[tetris->x-2][tetris->y] = b[1];
 			a[tetris->x+2][tetris->y] = b[2];
 			a[tetris->x][tetris->y-1] = b[3];
 			break;
 		}
-		case 7:{	//å³ä¸å­— 
+		case 7:{	//ÓÒ¶¡×Ö 
 			color(11);
 			a[tetris->x][tetris->y-1] = b[1];
 			a[tetris->x][tetris->y+1] = b[2];
 			a[tetris->x+2][tetris->y] = b[3];
 			break;
 		}
-		case 8:{	//Zå­— 
+		case 8:{	//Z×Ö 
 			color(14);
 			a[tetris->x-2][tetris->y] = b[1];
 			a[tetris->x+2][tetris->y+1] = b[2];
 			a[tetris->x][tetris->y+1] = b[3];
 			break;
 		}
-		case 9:{	//ç«–Zå­— 
+		case 9:{	//ÊúZ×Ö 
 			color(14);
 			a[tetris->x][tetris->y-1] = b[1];
 			a[tetris->x-2][tetris->y] = b[2];
 			a[tetris->x-2][tetris->y+1] = b[3];
 			break;
 		}
-		case 10:{	//åZå­— 
+		case 10:{	//·´Z×Ö 
 			color(14);
 			a[tetris->x-2][tetris->y] = b[1];
 			a[tetris->x][tetris->y-1] = b[2];
 			a[tetris->x+2][tetris->y-1] = b[3];
 			break;
 		}
-		case 11:{	//ç«–åZå­— 
+		case 11:{	//Êú·´Z×Ö 
 			color(14);
 			a[tetris->x][tetris->y+1] = b[1];
 			a[tetris->x-2][tetris->y] = b[2];
 			a[tetris->x-2][tetris->y-1] = b[3];
 			break;
 		}
-		case 12:{	//7å­— 
+		case 12:{	//7×Ö 
 			color(12);
 			a[tetris->x-2][tetris->y-1] = b[1];
 			a[tetris->x][tetris->y-1] = b[2];
 			a[tetris->x][tetris->y+1] = b[3];
 			break;
 		}
-		case 13:{	//å·¦7å­— 
+		case 13:{	//×ó7×Ö 
 			color(12);
 			a[tetris->x-2][tetris->y] = b[1];
 			a[tetris->x+2][tetris->y] = b[2];
 			a[tetris->x+2][tetris->y-1] = b[3];
 			break;
 		}
-		case 14:{	//ä¸Š7å­— 
+		case 14:{	//ÉÏ7×Ö 
 			color(12);
 			a[tetris->x][tetris->y+1] = b[1];
 			a[tetris->x+2][tetris->y+1] = b[2];
 			a[tetris->x][tetris->y-1] = b[3];
 			break;
 		}
-		case 15:{	//å³7å­— 
+		case 15:{	//ÓÒ7×Ö 
 			color(12);
 			a[tetris->x+2][tetris->y] = b[1];
 			a[tetris->x-2][tetris->y] = b[2];
 			a[tetris->x-2][tetris->y+1] = b[3];
 			break;
 		}
-		case 16:{	//å7å­— 
+		case 16:{	//·´7×Ö 
 			color(12);
 			a[tetris->x+2][tetris->y-1] = b[1];
 			a[tetris->x][tetris->y-1] = b[2];
 			a[tetris->x][tetris->y+1] = b[3];
 			break;
 		}
-		case 17:{	//å·¦å7å­— 
+		case 17:{	//×ó·´7×Ö 
 			color(12);
 			a[tetris->x-2][tetris->y] = b[1];
 			a[tetris->x+2][tetris->y] = b[2];
 			a[tetris->x+2][tetris->y+1] = b[3];
 			break;
 		}
-		case 18:{	//ä¸Šå7å­— 
+		case 18:{	//ÉÏ·´7×Ö 
 			color(12);
 			a[tetris->x][tetris->y+1] = b[1];
 			a[tetris->x-2][tetris->y+1] = b[2];
 			a[tetris->x][tetris->y-1] = b[3];
 			break;
 		}
-		case 19:{	//å³å7å­— 
+		case 19:{	//ÓÒ·´7×Ö 
 			color(12);
 			a[tetris->x+2][tetris->y] = b[1];
 			a[tetris->x-2][tetris->y] = b[2];
@@ -391,7 +391,7 @@ void PrintTetris(struct Tetris *tetris){
 		for(j=tetris->y-2; j<=tetris->y+1; j++){
 			if(a[i][j]==1 && j>FrameY){
 				gotoxy(i,j);
-				printf("â–‰");
+				printf("¨");
 			}
 		}
 	}
@@ -419,9 +419,9 @@ void PrintTetris(struct Tetris *tetris){
 }
 
 
-// è¿”å›å€¼ 0 ä¸ºfalse 1 ä¸ºtrue
+// ·µ»ØÖµ 0 Îªfalse 1 Îªtrue
 int ifMove(struct Tetris *tetris){
-	// åˆ¤æ–­ä¸­å¿ƒæ–¹å—
+	// ÅĞ¶ÏÖĞĞÄ·½¿é
 	if(a[tetris->x][tetris->y] != 0){
 		return 0;
 	}
@@ -592,7 +592,7 @@ void Del_Fullline(struct Tetris *tetris){
 							printf("  ");
 							a[i][k+1] = 0;
 							gotoxy(i,k+1);
-							printf("â–‰");
+							printf("¨");
 						}
 					}
 
@@ -628,7 +628,7 @@ void Gameplay(){
 	tetris->number = 0;
 	tetris->speed = 300;
 	tetris->score = 0;
-	tetirs->level = 1;
+	tetris->level = 1;
 
 	while(1){
 		Flag(tetris);
@@ -645,7 +645,7 @@ void Gameplay(){
 
 			label: PrintTetris(tetris);
 			Sleep(tetris->speed);
-			CleanTetrist(tetris);
+			CleanTetris(tetris);
 			Temp1 = tetris->x;
 			Temp2 = tetris->flag;
 
@@ -653,27 +653,27 @@ void Gameplay(){
 
 				ch = getch();
 
-				// å·¦
+				// ×ó
 				if(ch==75){
 					tetris->x-=2;
 				}
 
-				// å³
+				// ÓÒ
 				if(ch==77){
 					tetris->x+=2;
 				}
 
-				// ä¸‹ åŠ é€Ÿ
+				// ÏÂ ¼ÓËÙ
 				if(ch==80){
 					if(ifMove(tetris)!=0){
 						tetris->y+=2;
 					}
 					if(ifMove(tetris)==0){
-						tetris->y = FrmaeY+Frame_height-2;
+						tetris->y = FrameY+Frame_height-2;
 					}
 				}
 
-				// ä¸Š å˜ä½“
+				// ÉÏ ±äÌå
 				if(ch==72){
 					if(tetris->flag>=2 && tetris->flag<=3){
 						tetris->flag++;
@@ -746,35 +746,35 @@ void Gameplay(){
 
 		}
 
-		//å·²ç»åˆ°é¡¶äº†ï¼Œæ˜¾ç¤ºæ¸¸æˆç»“æŸ
+		//ÒÑ¾­µ½¶¥ÁË£¬ÏÔÊ¾ÓÎÏ·½áÊø
 		for(i=tetris->y-2;i<tetris->y+2;i++)	
   		{
   			if(i==FrameY)
    			{
-   				system("cls");	//æ¸…å±
-                gotoxy(29,7);   //è®¾ç½®æ˜¾ç¤ºä½ç½®
+   				system("cls");	//ÇåÆÁ
+                gotoxy(29,7);   //ÉèÖÃÏÔÊ¾Î»ÖÃ
                 printf("   \n");
-				color(12);	//çº¢è‰²
-				printf("\t\t\tâ–‰â–‰â–‰â–‰    â–‰   â–‰    â–‰â–‰      \n");
-                printf("\t\t\tâ–‰       â–‰â–‰  â–‰    â–‰  â–‰    \n");
-                printf("\t\t\tâ–‰â–‰â–‰â–‰    â–‰ â–‰ â–‰    â–‰   â–‰   \n");
-				printf("\t\t\tâ–‰       â–‰  â–‰â–‰    â–‰  â–‰    \n");
-				printf("\t\t\tâ–‰â–‰â–‰â–‰    â–‰   â–‰    â–‰â–‰      \n");
+				color(12);	//ºìÉ«
+				printf("\t\t\t¨¨¨¨    ¨   ¨    ¨¨      \n");
+                printf("\t\t\t¨       ¨¨  ¨    ¨  ¨    \n");
+                printf("\t\t\t¨¨¨¨    ¨ ¨ ¨    ¨   ¨   \n");
+				printf("\t\t\t¨       ¨  ¨¨    ¨  ¨    \n");
+				printf("\t\t\t¨¨¨¨    ¨   ¨    ¨¨      \n");
 				gotoxy(17,18);
 				color(14);
-				printf("æˆ‘è¦é‡æ–°ç©ä¸€å±€-------1");
+				printf("ÎÒÒªÖØĞÂÍæÒ»¾Ö-------1");
 				gotoxy(44,18);
-				printf("ä¸ç©äº†ï¼Œé€€å‡ºå§-------2\n");
+				printf("²»ÍæÁË£¬ÍË³ö°É-------2\n");
 				int n;
 				gotoxy(32,20);
-				printf("é€‰æ‹©[1/2]:");
+				printf("Ñ¡Ôñ[1/2]:");
 				color(11);
-				scanf("%d", &n);	//è¾“å…¥ 1 æˆ– 2
-    			switch (n)			//åˆ†æ”¯è¯­å¥
+				scanf("%d", &n);	//ÊäÈë 1 »ò 2
+    			switch (n)			//·ÖÖ§Óï¾ä
     			{
     				case 1:
         				system("cls");
-        				Replay(tetris);       	//é‡æ–°å¼€å§‹
+        				Replay(tetris);       	//ÖØĞÂ¿ªÊ¼
         				break;
     				case 2:
         				exit(0);
@@ -782,7 +782,7 @@ void Gameplay(){
     			}
    			}
   		}
-  		tetris->flag = tetris->next;	//æ¸…é™¤å³ä¾§ä¸‹ä¸€ä¸ªæ–¹æ¡†çš„å›¾å½¢
+  		tetris->flag = tetris->next;	//Çå³ıÓÒ²àÏÂÒ»¸ö·½¿òµÄÍ¼ĞÎ
   		tetris->x=FrameX+2*Frame_width+6;
   		tetris->y=FrameY+10;
   		CleanTetris(tetris);
@@ -799,9 +799,9 @@ void Replay(struct Tetris *tetris){
 
 int main(int argc, char *argv[]) {
 	
-	// æ¸¸æˆåç§° 
+	// ÓÎÏ·Ãû³Æ 
 	title();
-	// ç”¨æˆ·é€‰é¡¹ 
+	// ÓÃ»§Ñ¡Ïî 
 	welcome();
 	
 	return 0;
