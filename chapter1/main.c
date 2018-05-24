@@ -639,6 +639,111 @@ void Gameplay(){
 		tetris->x = FrameX+Frame_width;
 		tetris->y = FrameY-1;
 		tetris->flag = Temp;
+
+		while(1){
+
+			label: PrintTetris(tetris);
+			Sleep(tetris->speed);
+			CleanTetrist(tetris);
+			Temp1 = tetris->x;
+			Temp2 = tetris->flag;
+
+			if(kbhit()){
+
+				ch = getch();
+
+				// 左
+				if(ch==75){
+					tetris->x-=2;
+				}
+
+				// 右
+				if(ch==77){
+					tetris->x+=2;
+				}
+
+				// 下 加速
+				if(ch==80){
+					if(ifMove(tetris)!=0){
+						tetris->y+=2;
+					}
+					if(ifMove(tetris)==0){
+						tetris->y = FrmaeY+Frame_height-2;
+					}
+				}
+
+				// 上 变体
+				if(ch==72){
+					if(tetris->flag>=2 && tetris->flag<=3){
+						tetris->flag++;
+						tetris->flag%=2;
+						tetris->flag+=2;
+					}
+
+					if(tetris->flag>=4 && tetris->flag<=7){
+						tetris->flag++;
+						tetris->flag%=4;
+						tetris->flag+=4;
+					}
+
+					if(tetris->flag>=8 && tetris->flag<=11){
+						tetris->flag++;
+						tetris->flag%=4;
+						tetris->flag+=8;
+					}
+
+					if(tetris->flag>=12 && tetris->flag<=15){
+						tetris->flag++;
+						tetris->flag%=4;
+						tetris->flag+=12;
+					}
+
+					if(tetris->flag>=16 && tetris->flag<=19){
+						tetris->flag++;
+						tetris->flag%=4;
+						tetris->flag+=16;
+					}
+				}
+
+				// space
+				if(ch==32){
+					PrintTetris(tetris);
+					while(1){
+						if(kbhit()){
+							ch=getch();
+							if(ch==32){
+								goto label;
+							}
+						}
+					}
+				}
+
+				// esc
+				if(ch==27){
+					system("cls");
+					memset(a, 0, 6400*sizeof(int));
+					welcome();
+				}
+
+				if(ifMove(tetris) == 0){
+					tetris->x = Temp1;
+					tetris->flag = Temp2;
+				}
+				else {
+					goto label;
+				}
+
+			}
+
+			tetris->y++;
+			if(ifMove(tetris) == 0){
+				tetris->y--;
+				PrintTetris(tetris);
+				Del_Fullline(tetris);
+				break;
+			}
+
+		}
 		
 	}
 }
