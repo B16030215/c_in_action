@@ -418,11 +418,132 @@ void PrintTetris(struct Tetris *tetris){
 }
 
 
+// 返回值 0 为false 1 为true
 int ifMove(struct Tetris *tetris){
+	// 判断中心方块
 	if(a[tetris->x][tetris->y] != 0){
 		return 0;
 	}
 	else{
+		if(
+			(
+				tetris->flag == 1 &&
+				a[tetris->x][tetris->y-1] == 0 &&
+				a[tetris->x+2][tetris->y-1] == 0 &&
+				a[tetris->x+2][tetris->y] == 0
+			) ||
+			(
+				tetris->flag == 2 &&
+				a[tetris->x-2][tetris->y] == 0 &&
+				a[tetris->x+2][tetris->y] == 0 &&
+				a[tetris->x+4][tetris->y] == 0
+			) ||
+			(
+				tetris->flag == 3 &&
+				a[tetris->x][tetris->y-1] == 0 &&
+				a[tetris->x][tetris->y-2] == 0 &&
+				a[tetris->x][tetris->y+1] == 0
+			) ||
+			(
+				tetris->flag == 4 &&
+				a[tetris->x-2][tetris->y] == 0 &&
+				a[tetris->x+2][tetris->y] == 0 &&
+				a[tetris->x][tetris->y+1] == 0
+			) ||
+			(
+				tetris->flag == 5 &&
+				a[tetris->x][tetris->y-1] == 0 &&
+				a[tetris->x-2][tetris->y] == 0 &&
+				a[tetris->x][tetris->y+1] == 0
+			) ||
+			(
+				tetris->flag == 6 &&
+				a[tetris->x-2][tetris->y] == 0 &&
+				a[tetris->x+2][tetris->y] == 0 &&
+				a[tetris->x][tetris->y-1] == 0
+			) ||
+			(
+				tetris->flag == 7 &&
+				a[tetris->x][tetris->y-1] == 0 &&
+				a[tetris->x][tetris->y+1] == 0 &&
+				a[tetris->x+2][tetris->y] == 0
+			) ||
+			(
+				tetris->flag == 8 &&
+				a[tetris->x-2][tetris->y] == 0 &&
+				a[tetris->x+2][tetris->y+1] == 0 &&
+				a[tetris->x][tetris->y+1] == 0
+			) ||
+			(
+				tetris->flag == 9 &&
+				a[tetris->x][tetris->y-1] == 0 &&
+				a[tetris->x-2][tetris->y] == 0 &&
+				a[tetris->x-2][tetris->y+1] == 0
+			) ||
+			(
+				tetris->flag == 10 &&
+				a[tetris->x-2][tetris->y] == 0 &&
+				a[tetris->x][tetris->y-1] == 0 &&
+				a[tetris->x+2][tetris->y-1] == 0
+			) ||
+			(
+				tetris->flag == 11 &&
+				a[tetris->x][tetris->y+1] == 0 &&
+				a[tetris->x-2][tetris->y] == 0 &&
+				a[tetris->x-2][tetris->y-1] == 0
+			) ||
+			(
+				tetris->flag == 12 &&
+				a[tetris->x-2][tetris->y-1] == 0 &&
+				a[tetris->x][tetris->y-1] == 0 &&
+				a[tetris->x][tetris->y+1] == 0
+			) ||
+			(
+				tetris->flag == 13 &&
+				a[tetris->x-2][tetris->y] == 0 &&
+				a[tetris->x+2][tetris->y] == 0 &&
+				a[tetris->x+2][tetris->y-1] == 0
+			) ||
+			(
+				tetris->flag == 14 &&
+				a[tetris->x][tetris->y+1] == 0 &&
+				a[tetris->x+2][tetris->y+1] == 0 &&
+				a[tetris->x][tetris->y-1] == 0
+			) ||
+			(
+				tetris->flag == 15 &&
+				a[tetris->x+2][tetris->y] == 0 &&
+				a[tetris->x-2][tetris->y] == 0 &&
+				a[tetris->x-2][tetris->y+1] == 0
+			) ||
+			(
+				tetris->flag == 16 &&
+				a[tetris->x+2][tetris->y-1] == 0 &&
+				a[tetris->x][tetris->y-1] == 0 &&
+				a[tetris->x][tetris->y+1] == 0
+			) ||
+			(
+				tetris->flag == 17 &&
+				a[tetris->x-2][tetris->y] == 0 &&
+				a[tetris->x+2][tetris->y] == 0 &&
+				a[tetris->x+2][tetris->y+1] == 0
+			) ||
+			(
+				tetris->flag == 18 &&
+				a[tetris->x][tetris->y+1] == 0 &&
+				a[tetris->x-2][tetris->y+1] == 0 &&
+				a[tetris->x][tetris->y-1] == 0
+			) ||
+			(
+				tetris->flag == 19 &&
+				a[tetris->x+2][tetris->y] == 0 &&
+				a[tetris->x-2][tetris->y] == 0 &&
+				a[tetris->x-2][tetris->y-1] == 0
+			)
+			
+		){
+			return 1;
+		}
 		
 	}
 	
@@ -443,6 +564,82 @@ void CleanTetris(struct Tetris *tetris){
 				printf("  ");
 			}
 		}
+	}
+}
+
+void Del_Fullline(struct Tetris *tetris){
+	int k, del_rows = 0;
+
+	for(j=FrameY+Frame_height-1; j>FrameY+1; j--){
+		k = 0;
+
+		for(i=FrameX+2; i<2*Frame_width-2; i+=2){
+			if(a[i][j]==1){
+				k++;
+
+				if(k==Frame_width-2){
+					for(k=FrameX+2; k<FrameX+2*Frame_width-2; k+=2){
+						a[k][j] = 0;
+						gotoxy(k, j);
+						printf("  ");			
+					}
+
+					for(k=j-1; k=FrameY; k--){
+						if(a[i][k]==1){
+							a[i][k] = 0;
+							gotoxy(i,k);
+							printf("  ");
+							a[i][k+1] = 0;
+							gotoxy(i,k+1);
+							printf("▉");
+						}
+					}
+
+					j++;
+					del_rows++;
+				}
+			}
+		}
+	}
+
+	tetris->score+=100*del_rows;
+
+	if(del_rows>0 && (tetris->score%1000==0 || tetris->score/1000 > tetris->level-1)){
+		tetris->speed-=20;
+		tetris->level++;
+	}
+
+}
+
+void Flag(struct Tetris *tetris){
+	tetris->number++;
+	srand(time(NULL));
+	if(tetris->number==1){
+		tetris->flag = rand()%19+1;
+	}
+	tetris->next = rand()%19+1;
+}
+
+void Gameplay(){
+	int n;
+	struct Tetris t, *tetris=&t;
+	char ch;
+	tetris->number = 0;
+	tetris->speed = 300;
+	tetris->score = 0;
+	tetirs->level = 1;
+
+	while(1){
+		Flag(tetris);
+		Temp = tetris->flag;
+		tetris->x = FrameX + 2*Frame_width+6;
+		tetris->y = FrameY + 10;
+		tetris->flag = tetris->next;
+		PrintTetris(tetris);
+		tetris->x = FrameX+Frame_width;
+		tetris->y = FrameY-1;
+		tetris->flag = Temp;
+		
 	}
 }
 
