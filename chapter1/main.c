@@ -560,7 +560,7 @@ void CleanTetris(struct Tetris *tetris){
 	
 	for(i=tetris->x-2; i<=tetris->x+4; i+=2){
 		for(j=tetris->y-2; j<=tetris->y+1; j++){
-			if(a[i][j]==1 && j>FrameY){
+			if(a[i][j]==0 && j>FrameY){
 				gotoxy(i,j);
 				printf("  ");
 			}
@@ -594,7 +594,7 @@ void Del_Fullline(struct Tetris *tetris){
 							gotoxy(i,k+1);
 							printf("▉");
 						}
-					}
+				 	}
 
 					j++;
 					del_rows++;
@@ -641,7 +641,7 @@ void Gameplay(){
 		tetris->y = FrameY-1;
 		tetris->flag = Temp;
 
-		while(0){
+		while(1){
 
 			label: PrintTetris(tetris);
 			Sleep(tetris->speed);
@@ -783,11 +783,12 @@ void Gameplay(){
     			}
    			}
   		}
+  		*/
   		tetris->flag = tetris->next;	//清除右侧下一个方框的图形
   		tetris->x=FrameX+2*Frame_width+6;
   		tetris->y=FrameY+10;
   		CleanTetris(tetris);
-  		*/
+  		
 	}
 }
 
