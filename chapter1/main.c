@@ -578,7 +578,7 @@ void Del_Fullline(struct Tetris *tetris){
 			if(a[i][j]==1){
 				k++;
 
-				if(k==Frame_width-2){
+				if(k==Frame_width-4){
 					for(k=FrameX+2; k<FrameX+2*Frame_width-2; k+=2){
 						a[k][j] = 0;
 						gotoxy(k, j);
@@ -586,13 +586,15 @@ void Del_Fullline(struct Tetris *tetris){
 					}
 
 					for(k=j-1; k=FrameY; k--){
-						if(a[i][k]==1){
-							a[i][k] = 0;
-							gotoxy(i,k);
-							printf("  ");
-							a[i][k+1] = 0;
-							gotoxy(i,k+1);
-							printf("¨");
+						for(i=FrameX+2; i<FrameX+2*Frame_width-2; i+=2){
+							if(a[i][k]==1){
+								a[i][k] = 0;
+								gotoxy(i,k);
+								printf("  ");
+								a[i][k+1] = 0;
+								gotoxy(i,k+1);
+								printf("¨");
+							}
 						}
 				 	}
 
