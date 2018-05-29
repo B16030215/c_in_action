@@ -747,7 +747,6 @@ void Gameplay(){
 		}
 
 		//已经到顶了，显示游戏结束
-		/*
 		for(i=tetris->y-2;i<tetris->y+2;i++)	
   		{
   			if(i==FrameY)
@@ -756,11 +755,11 @@ void Gameplay(){
                 gotoxy(29,7);   //设置显示位置
                 printf("   \n");
 				color(12);	//红色
-				printf("\t\t\t▉▉▉▉    ▉   ▉    ▉▉      \n");
-                printf("\t\t\t▉       ▉▉  ▉    ▉  ▉    \n");
-                printf("\t\t\t▉▉▉▉    ▉ ▉ ▉    ▉   ▉   \n");
-				printf("\t\t\t▉       ▉  ▉▉    ▉  ▉    \n");
-				printf("\t\t\t▉▉▉▉    ▉   ▉    ▉▉      \n");
+				printf("\t\t\t▉▉▉▉ ▉    ▉ ▉▉      \n");
+                printf("\t\t\t▉       ▉▉  ▉ ▉  ▉    \n");
+                printf("\t\t\t▉▉▉▉ ▉ ▉ ▉ ▉   ▉   \n");
+				printf("\t\t\t▉       ▉  ▉▉ ▉  ▉    \n");
+				printf("\t\t\t▉▉▉▉ ▉    ▉ ▉▉      \n");
 				gotoxy(17,18);
 				color(14);
 				printf("我要重新玩一局-------1");
@@ -783,7 +782,7 @@ void Gameplay(){
     			}
    			}
   		}
-  		*/
+  		
   		tetris->flag = tetris->next;	//清除右侧下一个方框的图形
   		tetris->x=FrameX+2*Frame_width+6;
   		tetris->y=FrameY+10;
