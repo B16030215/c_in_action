@@ -574,7 +574,7 @@ void Del_Fullline(struct Tetris *tetris){
 	for(j=FrameY+Frame_height-1; j>FrameY+1; j--){
 		k = 0;
 
-		for(i=FrameX+2; i<2*Frame_width-2; i+=2){
+		for(i=FrameX+2; i<FrameX+2*Frame_width-2; i+=2){
 			if(a[i][j]==1){
 				k++;
 
@@ -585,7 +585,7 @@ void Del_Fullline(struct Tetris *tetris){
 						printf("  ");			
 					}
 
-					for(k=j-1; k=FrameY; k--){
+					for(k=j-1; k>FrameY; k--){
 						for(i=FrameX+2; i<FrameX+2*Frame_width-2; i+=2){
 							if(a[i][k]==1){
 								a[i][k] = 0;
@@ -628,7 +628,7 @@ void Gameplay(){
 	struct Tetris t, *tetris=&t;
 	char ch;
 	tetris->number = 0;
-	tetris->speed = 300;
+	tetris->speed = 150;
 	tetris->score = 0;
 	tetris->level = 1;
 
